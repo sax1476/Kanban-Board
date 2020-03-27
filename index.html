@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/a66a112bc4.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Kanban 4U</title>
+  </head>
+  <body onload="view.cards()">
+    <header>
+      <h1><i class="fas fa-list-alt"></i> KANBAN 4U</h1>
+      <p>A personal drag & drop Kanban Board</p>
+    </header>
+    <main>
+      <!-- add new card -->
+      <div>
+        <form>
+          <input type="text" id="card-title" placeholder="Title..." />
+          <input type="text" id="card-content" placeholder="Content..." />
+          <button type="submit" id="card-submit">Add</button>
+        </form>
+      </div>
+      <!-- board -->
+      <div id="board">
+        <div class="container" id="cont-1">
+          <div class="header">
+            <h5>To do</h5>
+            <button class="max-btn">Max: 6</button>
+          </div>
+          <div class="main">
+            <div class="item" draggable="true" id="item1">item 1</div>
+            <div class="item" draggable="true" id="item2">item 2</div>
+          </div>
+        </div>
+        <div class="container" id="cont-2">
+          <div class="header">
+            <h5>Progress</h5>
+            <button class="max-btn">Max: 6</button>
+          </div>
+          <div class="main">
+            <div class="item" draggable="true" id="item3">
+              <h6>title:</h6>
+              <hr />
+              <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              </p>
+            </div>
+            <div class="item" draggable="true" id="item4">item 2</div>
+          </div>
+        </div>
+        <div class="container" id="cont-3">
+          <div class="header">
+            <h5>Testing</h5>
+            <button class="max-btn">Max: 6</button>
+          </div>
+          <div class="main">
+            <div class="item" draggable="true" id="item5">item 1</div>
+            <div class="item" draggable="true" id="item6">item 2</div>
+          </div>
+        </div>
+        <div class="container" id="cont-4">
+          <div class="header">
+            <h5>Done</h5>
+            <button class="max-btn">Max: 6</button>
+          </div>
+          <div class="main">
+            <div class="item" draggable="true" id="item7">item 1</div>
+            <div class="item" draggable="true" id="item8">item 2</div>
+          </div>
+        </div>
+      </div>
+      <!-- dragging popup -->
+      <div id="drag-popup">
+        <button class="drag-btn">
+          <i class="fas fa-wrench"></i>
+        </button>
+        <button class="drag-btn">
+          <i class="fas fa-trash"></i>
+        </button>
+      </div>
+      <div id="change-popup">
+        <form>
+          <h3>Change</h3>
+          <hr />
+          <label>Title:</label>
+          <input type="text" id="change-title" />
+          <label>Content:</label>
+          <textarea id="change-content" cols="30" rows="5"></textarea>
+          <div>
+            <button id="change-submit" type="submit">Submit</button>
+            <button id="change-cancel" type="button">Cancel</button>
+          </div>
+        </form>
+      </div>
+      <div id="max-popup">
+        <form>
+          <label>Max:</label>
+          <input type="number" id="max-number" min="1" />
+          <div>
+            <button id="max-submit" type="submit">Submit</button>
+            <button id="max-cancel" type="button">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </main>
+    <footer></footer>
+    <script src="script.js"></script>
+  </body>
+</html>

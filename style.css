@@ -1,0 +1,288 @@
+/* Custom properties/variables  */
+:root {
+  --col1: #f2f2f2;
+  --col2: #8abd72;
+  --col3: #188367;
+  --col4: #ff914d;
+  --col5: #f16647;
+  --col6: #084056;
+  --col7: #e2be48;
+}
+
+/* Base reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* box-sizing and font sizing */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+/* Base styles */
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.8rem; /* 18px */
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--col1);
+  background-color: var(--col3);
+  min-height: 100vh;
+}
+
+header {
+  text-align: center;
+}
+
+#board {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+.container {
+  background-color: var(--col1);
+  width: 20%;
+  margin: 0.5% auto;
+  padding: 7px 7px 0px 7px;
+}
+.container:hover {
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.6);
+  transition: 0.3s;
+}
+#cont-1 {
+  background-color: var(--col5);
+}
+#cont-2 {
+  background-color: var(--col4);
+}
+#cont-3 {
+  background-color: var(--col7);
+}
+#cont-4 {
+  background-color: var(--col2);
+}
+/* container's header */
+.header {
+  background-color: var(--col6);
+  color: var(--col1);
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+.header button {
+  background-color: var(--col3);
+  color: var(--col1);
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  margin: auto 5px;
+}
+
+.header button:hover {
+  background-color: var(--col1);
+  color: var(--col6);
+  font-weight: 600;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+  transition: 0.3s;
+}
+.main {
+  padding: 1rem 0;
+}
+/* add card input */
+form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+form input {
+  margin: 3px;
+  border: none;
+  padding: 1rem;
+}
+form button {
+  padding: 1rem;
+  border: none;
+  background-color: var(--col6);
+  color: var(--col1);
+}
+form button:hover,
+form input:hover {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+  transition: 0.3s;
+}
+/* card's style */
+.main {
+  min-height: 20px;
+}
+.item {
+  background-color: var(--col1);
+  color: var(--col6);
+  border: 1px solid var(--col6);
+  margin: 5px auto;
+  padding: 5px;
+  box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.item:hover {
+  box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.6);
+  transition: 0.3s;
+}
+.item h6 {
+  font-size: 1em;
+}
+.item hr {
+  border-width: 1px;
+}
+.item p {
+  font-size: 0.8em;
+}
+.delete {
+  background-color: var(--col6);
+  color: var(--col1);
+  float: right;
+  border: none;
+  padding: 3px 6px;
+}
+.dragging {
+  background-color: #ccc;
+  opacity: 0.9;
+}
+/* drag popup area */
+#drag-popup {
+  background-image: linear-gradient(
+    180deg,
+    rgba(23, 37, 27, 0.8) 0%,
+    rgba(38, 129, 55, 0) 98%
+  );
+  position: fixed;
+  top: 0px;
+  padding: 20px 0 10px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  transition: 0.3s;
+  opacity: 0;
+  pointer-events: none;
+}
+.drag-btn {
+  background-color: var(--col6);
+  color: var(--col1);
+  text-align: center;
+  height: 6rem;
+  width: 6rem;
+  padding: 1rem;
+  font-size: 1.5rem;
+  border: none;
+  opacity: 0.95;
+  margin: 0px 5px;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+}
+
+.drag-btn i {
+  font-size: 2em;
+  padding: 0.25rem;
+  display: block;
+  cursor: pointer;
+}
+.drag-btn p {
+  line-height: 1.5;
+}
+/* change popup */
+#change-popup,
+#max-popup {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: 0.5s;
+  opacity: 0;
+  pointer-events: none;
+}
+#change-popup form,
+#max-popup form {
+  display: block;
+  background-color: var(--col3);
+  padding: 1.5rem;
+}
+#change-popup hr {
+  margin: 0.7rem 0;
+}
+#change-popup label {
+  font-size: 1.5rem;
+}
+#max-popup label {
+  text-align: center;
+  font-weight: 600;
+  padding-left: 0.3rem;
+}
+#change-popup input,
+#change-popup textarea,
+#max-popup input {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+}
+#change-popup div,
+#max-popup div {
+  display: flex;
+  justify-content: center;
+}
+#change-popup button,
+#max-popup button {
+  margin: 1rem 0.5rem 0 0.5rem;
+}
+/* 1200px / 16px = 75em */
+@media (max-width: 75em) {
+  html {
+    font-size: 60%;
+  }
+}
+
+/* 980px / 16px = 61.25em */
+@media (max-width: 61.25em) {
+  html {
+    font-size: 53%;
+  }
+  .header {
+    flex-direction: column;
+  }
+  .container {
+    margin: 1%;
+  }
+}
+
+/* 460px / 16px = 28.75em */
+@media (max-width: 28.75em) {
+  html {
+    font-size: 40%;
+  }
+  .header {
+    flex-direction: column;
+  }
+  .container {
+    margin: 0.5%;
+  }
+  form {
+    flex-direction: column;
+  }
+}
